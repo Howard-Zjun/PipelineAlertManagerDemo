@@ -42,18 +42,24 @@ class WAPipelineAlertManager: NSObject {
     
     private func addVCByShowRule(item: PiplineItemViewController, items: [PiplineItemViewController]) -> [PiplineItemViewController] {
         var items = items
-        if item.showType == .last {
-            items.append(item)
-        } else if item.showType == .first {
-            if items.first?.isAlerting ?? false { // 第一个已经展示，则放在第二个
-                items.insert(item, at: 1)
+        if item.urgencyDegree == .immediately {
+            if items.first?.isAlerting ?? false {
+                if items.count == 1 {
+                    items.append(item)
+                } else {
+                    items.insert(item, at: 1)
+                }
             } else {
-                items.insert(item, at: 0)
+                if items.count > 0 {
+                    items.insert(item, at: 0)
+                } else {
+                    items.append(item)
+                }
             }
-        } else {
+        } else if item.urgencyDegree == .beforeNormal {
             var isAdd = false
             for (index, tmpItem) in items.enumerated() {
-                if tmpItem.showType == .last && !tmpItem.isAlerting { // 在最后属性之前，并且还没弹出
+                if !tmpItem.isAlerting && (tmpItem.urgencyDegree == .normal || tmpItem.urgencyDegree == .last) {
                     isAdd = true
                     items.insert(item, at: index)
                     break
@@ -63,6 +69,21 @@ class WAPipelineAlertManager: NSObject {
             if !isAdd {
                 items.append(item)
             }
+        } else if item.urgencyDegree == .normal {
+            var isAdd = false
+            for (index, tmpItem) in items.enumerated() {
+                if !tmpItem.isAlerting && tmpItem.urgencyDegree == .last { // 在最后属性之前，并且还没弹出
+                    isAdd = true
+                    items.insert(item, at: index)
+                    break
+                }
+            }
+            
+            if !isAdd {
+                items.append(item)
+            }
+        } else if item.urgencyDegree == .last {
+            items.append(item)
         }
         return items
     }

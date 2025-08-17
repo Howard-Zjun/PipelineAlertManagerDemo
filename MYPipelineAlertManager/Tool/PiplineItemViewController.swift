@@ -14,18 +14,20 @@ protocol PiplineItemScheduleInformDelegate: NSObjectProtocol {
 
 class PiplineItemViewController: UIViewController {
 
-    // 展示方式
-    enum ShowType {
+    // 紧急程度，决定弹出顺序
+    enum UrgencyDegree {
+        case immediately // 立刻，下一个要弹出的位置
+        case beforeNormal // 在普通之前
         case normal // 普通
         case last // 放在最后
-        case first // 放在最前
     }
     
     weak var scheduleDelegate: PiplineItemScheduleInformDelegate?
     
     var isAlerting: Bool = false
     
-    var showType: ShowType = .normal
+    // 紧急程度
+    var urgencyDegree: UrgencyDegree = .normal
     
     func dismiss(animated flag: Bool, isOpenedVC: Bool, completion: (() -> Void)? = nil) {
         super.dismiss(animated: flag, completion: completion)
