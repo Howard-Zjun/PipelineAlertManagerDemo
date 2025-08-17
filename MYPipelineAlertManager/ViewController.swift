@@ -7,19 +7,31 @@
 
 import UIKit
 
+// 多个控制器共用一个管理工具案例
+var isAddItem = false
+
+var manager: WAPipelineAlertManager = {
+    let manager = WAPipelineAlertManager(vc: nil)
+    return manager
+}()
+
 /// 事例
 class ViewController: UIViewController {
     
-    lazy var manager: WAPipelineAlertManager = {
-        let manager = WAPipelineAlertManager(vc: self)
-        return manager
-    }()
+    // 每个控制器持有自己的管理工具
+//    lazy var manager: WAPipelineAlertManager = {
+//        let manager = WAPipelineAlertManager(vc: self)
+//        return manager
+//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 2) { [weak self] in
-            self?.addItem(count: 3)
+        if !isAddItem {
+            isAddItem = true
+            DispatchQueue.main.asyncAfter(wallDeadline: .now() + 2) { [weak self] in
+                self?.addItem(count: 3)
+            }
         }
     }
     

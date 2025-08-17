@@ -23,7 +23,7 @@ class WAPipelineAlertManager: NSObject {
         observationItems.value.isEmpty
     }
     
-    init(vc: UIViewController) {
+    init(vc: UIViewController?) {
         self.vc = vc
         super.init()
         // 默认开启订阅
