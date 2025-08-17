@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         DispatchQueue.main.asyncAfter(wallDeadline: .now() + 2) { [weak self] in
-            self?.addFiveItem()
+            self?.addItem(count: 3)
         }
     }
     
@@ -34,8 +34,8 @@ class ViewController: UIViewController {
         manager.vc = nil
     }
     
-    func addFiveItem() {
-        for i in 0..<3 {
+    func addItem(count: Int) {
+        for i in 0..<count {
             var config1 = NoteMsgViewController.MsgConfig(title: "通知\(i)", message: "细节-\(self)-\(i)", okText: "确认", cancelText: "取消")
             config1.isOpenVCByOk = true
             config1.okHandle = { [weak self] in
