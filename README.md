@@ -30,4 +30,4 @@ Debug 启动参数 `--run-pipeline-checks` 可自动运行检查；添加 `--exi
 
 ## 相关项目
 
-- [PipelineAlertManager](../PipelineAlertManager/README.md)：事件驱动的通知调度与展示组件。
+- [PipelineAlertManager](https://github.com/Howard-Zjun/PipelineAlertManager)：事件驱动的通知调度与展示组件。
