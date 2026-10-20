@@ -24,9 +24,6 @@ open PipelineAlertManagerDemo.xcworkspace
 ## 测试入口
 
 - **交互场景**：在首页选择逐个展示、优先级、同级顺序、ID 替换、取消推进、宿主限制、顶层 VC 或全屏恢复，按页面提示检查结果。
-- **自动检查**：点击“运行自动检查”，执行 8 项队列及宿主管理检查，结果显示在页面底部和 Xcode 控制台。
-
-Debug 启动参数 `--run-pipeline-checks` 可自动运行检查；添加 `--exit-after-checks` 可按结果以退出码 0 或 1 结束进程。成功输出为 `PIPELINE_CHECKS: 8/8 PASS`。
 
 ## 相关项目
 
