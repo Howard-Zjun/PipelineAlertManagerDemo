@@ -9,7 +9,7 @@ import UIKit
 
 public extension UITableView {
     
-    func register<T : UITableViewCell>(_ cellType: T.Type) {
+    func mRegister<T : UITableViewCell>(_ cellType: T.Type) {
         if Bundle.main.path(forResource: String(describing: cellType), ofType: "nib")?.first != nil {
             register(.init(nibName: String(describing: cellType), bundle: nil), forCellReuseIdentifier: NSStringFromClass(cellType))
         } else {
@@ -17,27 +17,8 @@ public extension UITableView {
         }
     }
     
-    func dequeueReusableCell<T : UITableViewCell>(_ cellType: T.Type, indexPath: IndexPath) -> T {
+    func mDequeueReusableCell<T : UITableViewCell>(_ cellType: T.Type, indexPath: IndexPath) -> T {
         if let cell = dequeueReusableCell(withIdentifier: NSStringFromClass(cellType), for: indexPath) as? T {
-            return cell
-        } else {
-            fatalError("没有注册\(cellType)")
-        }
-    }
-}
-
-public extension UICollectionView {
-    
-    func register<T : UICollectionViewCell>(_ cellType: T.Type) {
-        if Bundle.main.path(forResource: String(describing: cellType), ofType: "nib")?.first != nil {
-            register(.init(nibName: String(describing: cellType), bundle: nil), forCellWithReuseIdentifier: NSStringFromClass(cellType))
-        } else {
-            register(cellType, forCellWithReuseIdentifier: NSStringFromClass(cellType))
-        }
-    }
-    
-    func dequeueReusableCell<T : UICollectionViewCell>(_ cellType: T.Type, indexPath: IndexPath) -> T {
-        if let cell = dequeueReusableCell(withReuseIdentifier: NSStringFromClass(cellType), for: indexPath) as? T {
             return cell
         } else {
             fatalError("没有注册\(cellType)")

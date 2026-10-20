@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImage (Extend)
 
-- (UIColor *)mostColor;
+- (UIColor *)mMostColor;
 @end
 
 NS_ASSUME_NONNULL_END

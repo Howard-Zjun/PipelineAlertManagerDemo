@@ -10,7 +10,7 @@ import UIKit
 public extension URL {
     
     /// 兼容不同版本添加文件夹路径
-    func appendingDirectory(path: String) -> URL {
+    func mAppendingDirectory(path: String) -> URL {
         if #available(iOS 16.0, *) {
             return appending(path: path, directoryHint: .isDirectory)
         } else {
@@ -20,7 +20,7 @@ public extension URL {
     
     /// 移除文件夹下的文件
     @discardableResult
-    func removeDirItem() -> Bool {
+    func mRemoveDirItem() -> Bool {
         do {
             // skipsSubdirectoryDescendants 不遍历子文件夹
             // skipsPackageDescendants 不遍历包
@@ -31,7 +31,7 @@ public extension URL {
                 _ = FileManager.default.fileExists(atPath: url.path, isDirectory: &isDirectory)
                 
                 if isDirectory.boolValue {
-                    url.removeDirItem()
+                    url.mRemoveDirItem()
                     try? FileManager.default.removeItem(at: url)
                 } else {
                     try? FileManager.default.removeItem(at: url)

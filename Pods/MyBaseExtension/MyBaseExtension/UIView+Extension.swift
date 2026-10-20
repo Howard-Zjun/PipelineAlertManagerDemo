@@ -9,7 +9,7 @@ import UIKit
 
 public extension UIView {
     
-    var kminX: CGFloat {
+    var mMinX: CGFloat {
         get {
             frame.minX
         }
@@ -18,7 +18,7 @@ public extension UIView {
         }
     }
     
-    var kminY: CGFloat {
+    var mMinY: CGFloat {
         get {
             frame.minY
         }
@@ -27,25 +27,25 @@ public extension UIView {
         }
     }
     
-    var kmaxX: CGFloat {
+    var mMaxX: CGFloat {
         get {
             frame.maxX
         }
         set {
-            frame.origin.x = newValue - kwidth
+            frame.origin.x = newValue - mWidth
         }
     }
     
-    var kmaxY: CGFloat {
+    var mMaxY: CGFloat {
         get {
             frame.maxY
         }
         set {
-            frame.origin.y = newValue - kheight
+            frame.origin.y = newValue - mHeight
         }
     }
     
-    var kwidth: CGFloat {
+    var mWidth: CGFloat {
         get {
             frame.width
         }
@@ -54,7 +54,7 @@ public extension UIView {
         }
     }
     
-    var kheight: CGFloat {
+    var mHeight: CGFloat {
         get {
             frame.height
         }
@@ -68,8 +68,8 @@ public extension UIView {
     func rippleAnimation(strokeColor: UIColor = .init(hex: 0x3F87FF), beginTime: CFTimeInterval = 0) -> [CAShapeLayer]? {
         guard let superView = self.superview else { return nil }
         
-        let beginPath = UIBezierPath(arcCenter: center, radius: min(kheight, kwidth) * 0.5 - 2, startAngle: 0, endAngle: .pi * 2, clockwise: true)
-        let endPath = UIBezierPath(arcCenter: center, radius: min(kheight, kwidth) * 0.8, startAngle: 0, endAngle: .pi * 2, clockwise: true)
+        let beginPath = UIBezierPath(arcCenter: center, radius: min(mHeight, mWidth) * 0.5 - 2, startAngle: 0, endAngle: .pi * 2, clockwise: true)
+        let endPath = UIBezierPath(arcCenter: center, radius: min(mHeight, mWidth) * 0.8, startAngle: 0, endAngle: .pi * 2, clockwise: true)
         
         let shapeLayer1 = CAShapeLayer()
         shapeLayer1.lineWidth = 2

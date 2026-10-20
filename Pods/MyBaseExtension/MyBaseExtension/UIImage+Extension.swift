@@ -10,7 +10,7 @@ import AVFoundation
 
 public extension UIImage {
     
-    func export(toDirURL: URL) -> URL? {
+    func mExport(toDirURL: URL) -> URL? {
         // 如果不存在父文件夹，这创建
         if !FileManager.default.fileExists(atPath: toDirURL.path) {
             try? FileManager.default.createDirectory(at: toDirURL, withIntermediateDirectories: true)
@@ -36,7 +36,7 @@ public extension UIImage {
     }
     
     /// 缩略图
-    static func videoThumbnail(url: URL) -> UIImage? {
+    static func mVideoThumbnail(url: URL) -> UIImage? {
         let asset = AVAsset(url: url)
         let generator = AVAssetImageGenerator(asset: asset)
         generator.appliesPreferredTrackTransform = true

@@ -22,4 +22,14 @@ public extension UIColor {
         let b = hex & 0xff
         self.init(r: r, g: g, b: b, a: a)
     }
+    
+    /// 创建一个颜色图片
+    func mRreateImage(size: CGSize) -> UIImage {
+        let renderer = UIGraphicsImageRenderer(size: size)
+        let ret = renderer.image { [weak self] context in
+            self?.setFill()
+            context.fill(.init(origin: .zero, size: size))
+        }
+        return ret
+    }
 }

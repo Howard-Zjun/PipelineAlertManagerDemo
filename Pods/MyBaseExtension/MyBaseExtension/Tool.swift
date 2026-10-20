@@ -7,15 +7,11 @@
 
 import UIKit
 
-let TOP_HEIGHT: CGFloat = isiPhoneXMore ? 44 : 32
-
-let BOTTOM_HEIGHT: CGFloat = isiPhoneXMore ? (49.5+17) : 49
-
-public var isiPhoneXMore: Bool {
+public var mIsiPhoneXMore: Bool {
     var isMore:Bool = false
     if #available(iOS 11.0, *) {
-        if let kKeyWindow {
-            isMore = kKeyWindow.safeAreaInsets.bottom > 0.0
+        if let mKeyWindow {
+            isMore = mKeyWindow.safeAreaInsets.bottom > 0.0
         } else {
             isMore = false
         }
@@ -23,70 +19,70 @@ public var isiPhoneXMore: Bool {
     return isMore
 }
 
-public var kKeyWindow: UIWindow? {
+public var mKeyWindow: UIWindow? {
     UIApplication.shared.connectedScenes
         .filter { $0.activationState == .foregroundActive }
         .compactMap { $0 as? UIWindowScene }.first?.windows
         .filter { $0.isKeyWindow }.first
 }
 
-public var homeDirPath: String {
+public var mHomeDirPath: String {
     NSHomeDirectory()
 }
 
-public var homeDirAt: URL {
+public var mHomeDirAt: URL {
     if #available(iOS 16.0, *) {
-        return URL(filePath: homeDirPath)
+        return URL(filePath: mHomeDirPath)
     } else {
-        return URL(fileURLWithPath: homeDirPath)
+        return URL(fileURLWithPath: mHomeDirPath)
     }
 }
 
-public var documentsDirPath: String {
+public var mDocumentsDirPath: String {
     NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
 }
 
-public var documentsDirAt: URL {
+public var mDocumentsDirAt: URL {
     if #available(iOS 16.0, *) {
-        return URL(filePath: documentsDirPath)
+        return URL(filePath: mDocumentsDirPath)
     } else {
-        return URL(fileURLWithPath: documentsDirPath)
+        return URL(fileURLWithPath: mDocumentsDirPath)
     }
 }
 
-public var cachesDirPath: String {
+public var mCachesDirPath: String {
     NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
 }
 
-public var cachesDirAt: URL {
+public var mCachesDirAt: URL {
     if #available(iOS 16.0, *) {
-        return URL(filePath: cachesDirPath)
+        return URL(filePath: mCachesDirPath)
     } else {
-        return URL(fileURLWithPath: cachesDirPath)
+        return URL(fileURLWithPath: mCachesDirPath)
     }
 }
 
-public var tmpDirPath: String {
+public var mTmpDirPath: String {
     NSTemporaryDirectory()
 }
 
-public var tmpDirAt: URL {
+public var mTmpDirAt: URL {
     if #available(iOS 16.0, *) {
-        return URL(filePath: tmpDirPath)
+        return URL(filePath: mTmpDirPath)
     } else {
-        return URL(fileURLWithPath: tmpDirPath)
+        return URL(fileURLWithPath: mTmpDirPath)
     }
 }
 
-public var kAppVersion: String {
+public var mAppVersion: String {
     Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
 }
 
-public var kBuildVersion: String {
+public var mBuildVersion: String {
     Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
 }
 
-public var kDisplayName: String {
+public var mDisplayName: String {
     Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? ""
 }
 
@@ -97,7 +93,7 @@ public var kDisplayName: String {
 ///   - overwrite: 是否覆盖
 ///   - errorDes: 错误描述
 /// - Returns: 文件复制是否成功
-public func copyItem(atPath: String, toDirPath: String, overwrite: Bool, errorDes: inout Error) -> Bool {
+public func mCopyItem(atPath: String, toDirPath: String, overwrite: Bool, errorDes: inout Error) -> Bool {
     if !FileManager.default.fileExists(atPath: atPath) {
         return false
     }
@@ -114,7 +110,7 @@ public func copyItem(atPath: String, toDirPath: String, overwrite: Bool, errorDe
     
     let toPath = toDirPathURL.appendingPathComponent(fileName).absoluteString
     
-    return copyItem(atPath: atPath, toPath: toPath, overwrite: overwrite, errorDes: &errorDes)
+    return mCopyItem(atPath: atPath, toPath: toPath, overwrite: overwrite, errorDes: &errorDes)
 }
 
 /// 文件复制
@@ -124,7 +120,7 @@ public func copyItem(atPath: String, toDirPath: String, overwrite: Bool, errorDe
 ///   - overwrite: 是否覆盖
 ///   - errorDes: 错误描述
 /// - Returns: 文件复制是否成功
-public func copyItem(atPath: String, toPath: String, overwrite: Bool, errorDes: inout Error) -> Bool {
+public func mCopyItem(atPath: String, toPath: String, overwrite: Bool, errorDes: inout Error) -> Bool {
     if !FileManager.default.fileExists(atPath: atPath) {
         return false
     }

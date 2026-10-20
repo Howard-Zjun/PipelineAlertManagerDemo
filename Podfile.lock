@@ -1,33 +1,27 @@
 PODS:
-  - MyBaseExtension (0.0.5)
-  - RxCocoa (6.8.0):
-    - RxRelay (= 6.8.0)
-    - RxSwift (= 6.8.0)
-  - RxRelay (6.8.0):
-    - RxSwift (= 6.8.0)
-  - RxSwift (6.8.0)
+  - MyBaseExtension (0.0.8)
+  - PipelineAlertManager (0.0.1)
   - SnapKit (5.7.1)
 
 DEPENDENCIES:
   - MyBaseExtension
-  - RxCocoa
+  - PipelineAlertManager (from `./PipelineAlertManager`)
   - SnapKit
 
 SPEC REPOS:
   trunk:
     - MyBaseExtension
-    - RxCocoa
-    - RxRelay
-    - RxSwift
     - SnapKit
 
+EXTERNAL SOURCES:
+  PipelineAlertManager:
+    :path: "./PipelineAlertManager"
+
 SPEC CHECKSUMS:
-  MyBaseExtension: b4a156775637f6bea13af8eb3e12d2fb02116fd6
-  RxCocoa: 2d33c1e1e5d66492052ad46b11024ae287572880
-  RxRelay: 335c78b926a2aea8d863a6d25f1ed3b5ad8e8705
-  RxSwift: 4e28be97cbcfeee614af26d83415febbf2bf6f45
+  MyBaseExtension: 15d9b3ede7cfa3f83b5014ac6a9e0b7f970754f8
+  PipelineAlertManager: 1576528fd318de50ee9f78def5b03436f9513b0e
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
 
-PODFILE CHECKSUM: 35eeedb442dc2da2689225b59b32a7e616d6cfd7
+PODFILE CHECKSUM: d012dd07e978cbcdc2bc2acf1e9ef236fdffe06a
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.17.0

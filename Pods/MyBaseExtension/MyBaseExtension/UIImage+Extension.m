@@ -12,7 +12,7 @@
 
 /// 根据图片获取图片的主色调
 /// 参考连接：https://blog.csdn.net/LANGJ1/article/details/121195201
-- (UIColor *)mostColor {
+- (UIColor *)mMostColor {
 #if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_1
     int bitmapInfo = kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedLast;
 #else

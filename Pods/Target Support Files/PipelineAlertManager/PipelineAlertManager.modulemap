@@ -1,0 +1,6 @@
+framework module PipelineAlertManager {
+  umbrella header "PipelineAlertManager-umbrella.h"
+
+  export *
+  module * { export * }
+}
